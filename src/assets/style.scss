@@ -1,14 +1,15 @@
 $primaryColor: #091733;
 $textWhite: white;
 $textOrange: #ff7a2e;
+$red: rgb(228, 83, 83);
 
 body {
   font-family: "Roboto";
 }
 
 .content {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
   hr {
     margin: 10px 20px;
@@ -30,7 +31,7 @@ body {
     background: #091733;
     color: $textWhite;
     padding: 28px;
-    margin: 0 20px;
+    margin: 10px 20px;
     border-radius: 10px;
     .main-content {
       display: flex;
@@ -63,7 +64,7 @@ body {
       img {
         margin-right: 10px;
       }
-      a {
+      .btn-detail {
         color: $textWhite;
         text-decoration: none;
         background: $textOrange;
@@ -88,7 +89,7 @@ body {
       .progress-bar {
         width: 100%;
         height: 20px;
-        background-color: #f2f2f2;
+        background-color: $primaryColor;
         border-radius: 4px;
       }
 
@@ -110,7 +111,7 @@ body {
   .nav-footer {
     display: flex;
     background: $primaryColor;
-    position: absolute;
+    position: fixed;
     bottom: 1vh;
     left: 50%;
     transform: translateX(-50%);
@@ -125,16 +126,23 @@ body {
       text-decoration: none;
       padding: 0 30px;
     }
+    .total-fav {
+      position: fixed;
+      background: $red;
+      bottom: 28px;
+      font-size: 12px;
+      right: 57px;
+      padding: 2px 7px;
+      border-radius: 18px;
+    }
   }
 }
 
-.list-pokemon {
+.infinite-scroll-component {
   margin: 0px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: 62vh;
-  overflow: auto;
   .list-card {
     margin: 10px 0;
     width: 157px;
@@ -153,7 +161,7 @@ body {
     }
 
     .list-info {
-      margin-top: 10px;
+      margin: 10px 0;
       width: 74px;
       height: 20px;
       background: #263c66;

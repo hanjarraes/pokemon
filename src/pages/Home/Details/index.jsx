@@ -1,29 +1,66 @@
-import Pikachu from '../../../assets/icon/Rectangle 11.svg'
+import React from 'react';
+import Heart from '../../../assets/icon/Heart.svg'
 import Like from '../../../assets/icon/Favorite.svg'
-import { truncateText } from '../../service'
-
+import { getDetail, truncateText } from '../../service'
+import { useSelector, useDispatch } from "react-redux";
 
 const Details = () => {
+  const dispatch = useDispatch();
+  const [pokemonDetail, setPokemonDetail] = React.useState([]);
+  const detail = useSelector((state) => state.global.detail);
+  const favorite = useSelector((state) => state.global.favorite);
+
   const descData = "Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsunLoren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsunLoren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsunLoren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsunLoren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsunLoren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun Loren ipsun"
+
+  React.useEffect(() => {
+    getDetail({ setPokemonDetail, detail });
+  }, [detail]);
+
+  const ImgPokemon = pokemonDetail?.sprites?.front_default
+  const NamePokemon = pokemonDetail?.species?.name
+
+  const changeFavorit = () => {
+    const existingIndex = favorite.findIndex((item) => item.number === detail);
+    if (existingIndex !== -1) {
+      const updatedFavorite = [...favorite];
+      updatedFavorite.splice(existingIndex, 1);
+      dispatch({ type: "FAVORITE", payload: updatedFavorite });
+    } else {
+      const newFavorite = [...favorite, { data: pokemonDetail, number: detail }];
+      dispatch({ type: "FAVORITE", payload: newFavorite });
+    }
+  }
 
   return (
     <>
       <div className='content'>
-        <div className='title'> <a href='/'>{"<"}</a> Pikachu</div>
+        <div className='title'> <a href='/'>{"<"}</a> {NamePokemon}</div>
         <hr />
         <div className="main-card">
           <div className="main-content">
-            <img src={Pikachu} alt="iconPikachu" />
+            <img src={ImgPokemon} alt="ImgPokemon" />
             <div className="vertical-line" />
             <div>
-              <div className="main-title">Pikachu</div>
+              <div className="main-title">{NamePokemon}</div>
               <div className="main-desc">
                 {truncateText(descData, 20)}
               </div>
             </div>
           </div>
           <div className='main-footer'>
-            <img src={Like} alt="IconLike" />
+            {favorite?.some((item) => item.number === detail) ? (
+              <img
+                src={Heart}
+                alt='IconLike2'
+                onClick={() => changeFavorit()}
+              />
+            ) : (
+              <img
+                src={Like}
+                alt='IconLike2'
+                onClick={() => changeFavorit()}
+              />
+            )}
           </div>
         </div>
         <div className='title'>Habilidades</div>
@@ -32,40 +69,33 @@ const Details = () => {
           <div className='item-ability'>
             <span>HP:</span>
             <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: 50 }}></div>
+              <div class="progress-bar-fill" style={{ width: "50%" }}></div>
             </div>
           </div>
           <div className='item-ability'>
             <span>Attack:</span>
             <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: 50 }}></div>
+              <div class="progress-bar-fill" style={{ width: "10%" }}></div>
             </div>
           </div>
           <div className='item-ability'>
             <span>Defense:</span>
             <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: 50 }}></div>
+              <div class="progress-bar-fill" style={{ width: "50%" }}></div>
             </div>
           </div>
           <div className='item-ability'>
             <span>Special Attack:</span>
             <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: 50 }}></div>
+              <div class="progress-bar-fill" style={{ width: "60%" }}></div>
             </div>
           </div>
           <div className='item-ability'>
             <span>hp:</span>
             <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: 50 }}></div>
+              <div class="progress-bar-fill" style={{ width: "90%" }}></div>
             </div>
           </div>
-          <div className='item-ability'>
-            <span>hp:</span>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: 50 }}></div>
-            </div>
-          </div>
-
         </div>
       </div>
     </>
