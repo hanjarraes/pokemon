@@ -100,7 +100,7 @@ const Home = () => {
             Scroll to Top
           </div>
         )}
-        <div className='title'>Destaque</div>
+        <div className='title pt-3'>Destaque</div>
         <div className='row d-none d-md-flex'>
           {renderCards()}
         </div>
@@ -123,7 +123,7 @@ const Home = () => {
         </div>
 
 
-        <div className='title'>Pokemons</div>
+        <div className='title pt-3'>Pokemons</div>
 
         {isLoading ? <div>Loading...</div> :
           <>
