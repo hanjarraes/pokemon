@@ -33,67 +33,145 @@ const Details = () => {
 
   return (
     <>
-      <div className='content'>
-        <div className='title'> <a href='/'>{"<"}</a> {NamePokemon}</div>
-        <hr />
-        <div className="main-card">
-          <div className="main-content">
-            <img src={ImgPokemon} alt="ImgPokemon" />
-            <div className="vertical-line" />
+      <div className='container'>
+        <div className='row d-md-flex d-none'>
+          <div className='col-6'>
             <div>
-              <div className="main-title">{NamePokemon}</div>
-              <div className="main-desc">
-                {truncateText(descData, 20)}
+              <div className='title'> <a href='/' className='d-block d-md-none'>{"<"}</a> {NamePokemon}</div>
+              <hr />
+              <div className="main-card">
+                <div className="main-content">
+                  <img src={ImgPokemon} alt="ImgPokemon" />
+                  <div className="vertical-line" />
+                  <div>
+                    <div className="main-title">{NamePokemon}</div>
+                    <div className="main-desc">
+                      {truncateText(descData, 20)}
+                    </div>
+                  </div>
+                </div>
+                <div className='main-footer'>
+                  {favorite?.some((item) => item.number === detail) ? (
+                    <img
+                      src={Heart}
+                      alt='IconLike2'
+                      onClick={() => changeFavorit()}
+                    />
+                  ) : (
+                    <img
+                      src={Like}
+                      alt='IconLike2'
+                      onClick={() => changeFavorit()}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          <div className='main-footer'>
-            {favorite?.some((item) => item.number === detail) ? (
-              <img
-                src={Heart}
-                alt='IconLike2'
-                onClick={() => changeFavorit()}
-              />
-            ) : (
-              <img
-                src={Like}
-                alt='IconLike2'
-                onClick={() => changeFavorit()}
-              />
-            )}
+          <div className='col-6'>
+            <div>
+              <div className='title pt-1'>Habilidades</div>
+              <hr />
+              <div className='ability'>
+                <div className='item-ability'>
+                  <span>HP:</span>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style={{ width: "50%" }}></div>
+                  </div>
+                </div>
+                <div className='item-ability'>
+                  <span>Attack:</span>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style={{ width: "10%" }}></div>
+                  </div>
+                </div>
+                <div className='item-ability'>
+                  <span>Defense:</span>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style={{ width: "50%" }}></div>
+                  </div>
+                </div>
+                <div className='item-ability'>
+                  <span>Special Attack:</span>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style={{ width: "60%" }}></div>
+                  </div>
+                </div>
+                <div className='item-ability'>
+                  <span>hp:</span>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style={{ width: "90%" }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='col-6'></div>
+        </div>
+        <div className='d-md-none d-block'>
+          <div className='title'> <a href='/' className='d-block d-md-none'>{"<"}</a> {NamePokemon}</div>
+          <hr />
+          <div className="main-card">
+            <div className="main-content">
+              <img src={ImgPokemon} alt="ImgPokemon" />
+              <div className="vertical-line" />
+              <div>
+                <div className="main-title">{NamePokemon}</div>
+                <div className="main-desc">
+                  {truncateText(descData, 20)}
+                </div>
+              </div>
+            </div>
+            <div className='main-footer'>
+              {favorite?.some((item) => item.number === detail) ? (
+                <img
+                  src={Heart}
+                  alt='IconLike2'
+                  onClick={() => changeFavorit()}
+                />
+              ) : (
+                <img
+                  src={Like}
+                  alt='IconLike2'
+                  onClick={() => changeFavorit()}
+                />
+              )}
+            </div>
           </div>
         </div>
-        <div className='title'>Habilidades</div>
-        <hr />
-        <div className='ability'>
-          <div className='item-ability'>
-            <span>HP:</span>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: "50%" }}></div>
+        <div className='d-md-none d-block'>
+          <div className='title'>Habilidades</div>
+          <hr />
+          <div className='ability'>
+            <div className='item-ability'>
+              <span>HP:</span>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style={{ width: "50%" }}></div>
+              </div>
             </div>
-          </div>
-          <div className='item-ability'>
-            <span>Attack:</span>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: "10%" }}></div>
+            <div className='item-ability'>
+              <span>Attack:</span>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style={{ width: "10%" }}></div>
+              </div>
             </div>
-          </div>
-          <div className='item-ability'>
-            <span>Defense:</span>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: "50%" }}></div>
+            <div className='item-ability'>
+              <span>Defense:</span>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style={{ width: "50%" }}></div>
+              </div>
             </div>
-          </div>
-          <div className='item-ability'>
-            <span>Special Attack:</span>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: "60%" }}></div>
+            <div className='item-ability'>
+              <span>Special Attack:</span>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style={{ width: "60%" }}></div>
+              </div>
             </div>
-          </div>
-          <div className='item-ability'>
-            <span>hp:</span>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" style={{ width: "90%" }}></div>
+            <div className='item-ability'>
+              <span>hp:</span>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" style={{ width: "90%" }}></div>
+              </div>
             </div>
           </div>
         </div>

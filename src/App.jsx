@@ -2,11 +2,15 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import TheLayout from "./container/TheLayout";
 import routes from "./routes";
-
-import './assets/style.scss'
+import AOS from 'aos';
+import "./assets/scss/styles.scss";
+import 'aos/dist/aos.css';
 
 
 function App() {
+  React.useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <Routes>
