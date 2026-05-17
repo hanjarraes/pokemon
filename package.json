@@ -1,5 +1,6 @@
 {
   "name": "pokemon",
+  "homepage": "https://hanjarraes.github.io/pokemon",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
