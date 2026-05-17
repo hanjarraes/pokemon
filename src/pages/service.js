@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_WEB_URL || "https://pokeapi.co/api/v2",
+  baseURL: (process.env.REACT_APP_WEB_URL || "https://pokeapi.co/api/v2").replace(/^["']|["']$/g, ""),
 });
 
 export const getData = async ({ setPokemonList, setIsLoading }) => {
