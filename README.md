@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# 🎮 Pokédex App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive Pokédex web application built with React — browse, search, and explore Pokémon data powered by the PokéAPI.
 
-## Available Scripts
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
+[![Redux](https://img.shields.io/badge/Redux_Toolkit-1.9-764ABC?style=flat-square&logo=redux)](https://redux-toolkit.js.org)
+[![Firebase](https://img.shields.io/badge/Firebase-9-FFCA28?style=flat-square&logo=firebase)](https://firebase.google.com)
+[![SCSS](https://img.shields.io/badge/SCSS-Sass-CC6699?style=flat-square&logo=sass)](https://sass-lang.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📸 Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- Add your screenshots inside the docs/screenshots/ folder and update the paths below -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Home | Detail |
+|------|--------|
+| ![Home](docs/screenshots/home.png) | ![Detail](docs/screenshots/detail.png) |
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ✨ Features
 
-### `npm run build`
+- 🔍 **Browse & Search** — Explore all Pokémon with infinite scroll
+- 📖 **Detail Page** — View stats, types, abilities, and evolutions
+- ❤️ **Favorites** — Save your favorite Pokémon (persisted with Redux Persist)
+- 🔐 **Authentication** — Login & register powered by Firebase Auth
+- 🎨 **Smooth Animations** — Page transitions with AOS
+- 📱 **Responsive Design** — Looks great on mobile and desktop
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Technology | Purpose |
+|------------|---------|
+| **React 18** | UI framework |
+| **Redux Toolkit** | Global state management |
+| **Redux Persist** | Persist favorites across sessions |
+| **React Router v6** | Client-side routing |
+| **Firebase 9** | Authentication & backend |
+| **Axios** | HTTP requests to PokéAPI |
+| **SCSS / Sass** | Styling |
+| **AOS** | Scroll animations |
+| **React Infinite Scroll** | Infinite scroll for Pokémon list |
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Node.js 16+
+- npm or yarn
+- A Firebase project (for authentication)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Installation
 
-## Learn More
+```bash
+# 1. Clone the repo
+git clone https://github.com/hanjarraes/pokemon.git
+cd pokemon
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 2. Install dependencies
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 3. Set up environment variables
+cp .env.sample .env
+```
 
-### Code Splitting
+### Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Edit your `.env` file with the correct values:
 
-### Analyzing the Bundle Size
+```env
+PORT=3000
+NODE_ENV=development
+REACT_APP_WEB_URL=https://pokeapi.co/api/v2
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Firebase config (get these from your Firebase Console)
+REACT_APP_FIREBASE_API_KEY=your_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+REACT_APP_FIREBASE_APP_ID=your_app_id
+```
 
-### Making a Progressive Web App
+### Running the App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm start
+```
 
-### Advanced Configuration
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+src/
+├── components/        # Reusable UI components
+├── pages/             # Route-level page components
+├── store/             # Redux store, slices, and reducers
+├── hooks/             # Custom React hooks
+├── services/          # Axios API calls (PokéAPI)
+├── firebase/          # Firebase config & auth helpers
+├── styles/            # Global SCSS styles and variables
+└── App.js             # App root with router setup
+```
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🌐 Live Demo
+
+👉 **[hanjarraes.github.io/pokemon](https://hanjarraes.github.io/pokemon)**
+
+---
+
+## 🔧 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Run development server on port 3000 |
+| `npm run build` | Build for production |
+| `npm test` | Run tests |
+| `npm run eject` | Eject CRA config (irreversible) |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+1. Fork the repository
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "feat: add your feature"`
+4. Push and open a Pull Request
+
+---
+
+## 📜 License
+
+MIT License — free to use and modify.
+
+---
+
+Made with ❤️ using [PokéAPI](https://pokeapi.co)
