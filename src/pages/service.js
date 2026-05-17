@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const BaseUrl = process.env.REACT_APP_WEB_URL;
+const api = axios.create({
+  baseURL: process.env.REACT_APP_WEB_URL || "https://pokeapi.co/api/v2",
+});
 
 export const getData = async ({ setPokemonList, setIsLoading }) => {
   try {
-    const response = await axios.get(`${BaseUrl}/pokemon`);
+    const response = await api.get("/pokemon");
     const data = response.data.results;
     setIsLoading(false);
     setPokemonList((prevList) => [...prevList, ...data]);
@@ -16,7 +18,7 @@ export const getData = async ({ setPokemonList, setIsLoading }) => {
 
 export const getDetail = async ({ setPokemonDetail, detail }) => {
   try {
-    const response = await axios.get(`${BaseUrl}/pokemon/${detail}`);
+    const response = await api.get(`/pokemon/${detail}`);
     const data = response.data;
     setPokemonDetail(data);
   } catch (error) {
